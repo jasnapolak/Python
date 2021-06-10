@@ -17,6 +17,7 @@ while True:
 
     mi = km * 0.621371
     print("The value is " + str(mi) + "mi.")
+    #print("The value is {0}mi." .format(mi))
 
     repeat = str(input('Do you want to do another conversion? Type "yes" or "no": '))
 
