@@ -5,20 +5,20 @@ import datetime
 secret = random.randint(1,10)
 attempts = 0
 
-player = input("Hello, What is your name? ")
+player = str(input("Hello, what is your name? "))
 
 with open("score_list.json", "r") as score_file:
     score_list = json.loads(score_file.read())
 
 for score_dict in score_list:
-    print (str(score_dict["attempts"]) + " attempts, date: " + score_dict.get("date"))
+    print (str(score_dict["attempts"]) + " attempts, player: " + str(score_dict.get("player")) + ", date: " + score_dict.get("date"))
 
 while True:
     guess = int(input("Guess the secret number: (between 1 and 10): "))
     attempts += 1
 
     if secret == guess:
-        score_list.append({"attempts": attempts, "date": str(datetime.datetime.now())})
+        score_list.append({"attempts": attempts, "player": player, "date": str(datetime.datetime.now())})
 
         with open("score_list.json", "w") as score_file:
             score_file.write(json.dumps(score_list))
